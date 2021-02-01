@@ -1,26 +1,27 @@
 import Layout from '../../components/Layout'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import axios from 'axios'
 
 function NewPost() {
+    const router = useRouter()
     const [title, setTitle] = useState('')
     const [summary, setSummary] = useState('')
     const [error, setError] = useState('')
     async function handleSubmit(event) {
         event.preventDefault()
         if (!title || title.length === 0 || !summary || summary.length === 0) {
-            setError('Please fill out all fields');
+            setError('Please fill out all fields')
             return
         }
         try {
             const res = await axios.post(process.env.NEXT_APP_URI + '/posts/new', {
-                post: {
-                    title: title,
-                    summary: summary,
-                }
+                title: title,
+                summary: summary,
             })
+            router.push("/")
         } catch (error) {
-            setError(error.message);
+            setError(error.message)
         }
     }
     return (
