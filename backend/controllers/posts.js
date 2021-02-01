@@ -19,4 +19,12 @@ PostController.allPosts = (req, res) => {
     })
 }
 
+PostController.postBySlug = (req, res) => {
+    Post.findOne({slug: req.params.slug}).lean().then(post => {
+        res.status(200).json({ post });
+    }).catch(err => {
+        console.log(err.message);
+    })
+}
+
 module.exports = PostController

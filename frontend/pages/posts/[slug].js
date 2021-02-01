@@ -1,20 +1,23 @@
+import axios from 'axios'
 function Post({ post }) {
-    return <h1>{post}</h1>
+    return <h1>{post.title}</h1>
 }
 
 export async function getStaticPaths() {
-    // const res = await fetch(`${process.env.NEXT_APP_URI}/posts/`)
-    // const posts = await res.json()
-    //
-    // const paths = posts.map((post) => `/posts/${post.id}`)
-    const paths = ['/posts/0', '/posts/1']
-    return { paths, fallback: false }
+    try {
+        const res = await axios.get(process.env.NEXT_APP_URI + '/posts/')
+        const posts = res.data.posts
+        const paths = posts.map((post) => `/posts/${post.slug}`)
+        return { paths, fallback: false }
+    } catch (err) {
+        console.log(err.message)
+    }
+
 }
 
 export async function getStaticProps({ params }) {
-    // const res = await fetch(`${process.env.NEXT_APP_URI}/posts/${ + params.id}`)
-    // const post = await res.json()
-    const post = 'Hello world!'
+    const res = await axios.get(process.env.NEXT_APP_URI + '/posts/' + params.slug)
+    const post = res.data.post
     return { props: { post } }
 }
 
