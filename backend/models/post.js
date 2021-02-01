@@ -6,7 +6,7 @@ const PostSchema = new Schema({
     title: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
     summary: { type: String, required: true }
-})
+}, {timestamps: {createdAt: 'created_at'}})
 
 // Create a unique slug based on title
 PostSchema.pre("validate", function(next) {
