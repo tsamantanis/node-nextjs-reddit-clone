@@ -63,7 +63,7 @@ function NewPost() {
                                 <div className="form-group text-center">
                                     <small className="text-danger">
                                         {error}
-                                    </small> 
+                                    </small>
                                 </div>
                             }
                             <div className='text-center mt-2'>
