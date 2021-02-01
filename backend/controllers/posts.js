@@ -11,4 +11,12 @@ PostController.newPost = (req, res) => {
     })
 }
 
+PostController.allPosts = (req, res) => {
+    Post.find({}).lean().then(posts => {
+        res.status(200).json({ posts });
+    }).catch(err => {
+        console.log(err.message);
+    })
+}
+
 module.exports = PostController

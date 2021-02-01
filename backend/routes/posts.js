@@ -1,10 +1,12 @@
 import { Router } from "express"
 import {
-    newPost
+    newPost,
+    allPosts,
 } from "../controllers/posts"
 
 const router = Router()
 
-router.post("/new", newPost);
+router.get("/", allPosts)
+router.post("/new", newPost)
 
-module.exports = router;
+module.exports = router

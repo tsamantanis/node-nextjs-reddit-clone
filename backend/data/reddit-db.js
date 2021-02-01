@@ -4,7 +4,12 @@ const assert = require("assert")
 mongoose.Promise = global.Promise
 mongoose.connect(
     process.env.MONGODB_URI,
-    { useNewUrlParser: true },
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    },
     function(err, db) {
         assert.equal(null, err)
         console.log("Connected successfully to database")
