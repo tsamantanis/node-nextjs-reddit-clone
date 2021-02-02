@@ -15,22 +15,18 @@ function Posts() {
 
     return (
         <Layout>
-            <div className="container">
-                <div className="row mt-5">
-                    {posts.map((post) => {
-                        return (
-                            <Link href={'/posts/' + post.slug}>
-                                <div className="col-12 col-md-8 col-lg-6">
-                                    <div className={styles.card}>
-                                        <h3>{ post.title }</h3>
-                                        <p>{ post.description }</p>
-                                    </div>
-                                </div>
-                            </Link>
-                        )}
-                    )}
-                </div>
-            </div>
+            {posts.map((post) => {
+                return (
+                    <Link href={'/posts/' + post.slug}>
+                        <div className="col-12">
+                            <div className={styles.card}>
+                                <h3>{ post.title }</h3>
+                                <p>{ post.description }</p>
+                            </div>
+                        </div>
+                    </Link>
+                )}
+            )}
         </Layout>
     )
 }
