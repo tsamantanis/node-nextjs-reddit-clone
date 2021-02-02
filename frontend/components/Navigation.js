@@ -1,6 +1,8 @@
+import styles from '../styles/Layout.module.css'
+
 function Navigation() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
             <a className="navbar-brand" href="/">Reddit.js</a>
 
             <form className="form-inline my-2 my-lg-0 mx-auto">

@@ -5,14 +5,16 @@
     --secondary-desat: rgba(82, 150, 221, 0.3) !important;
     --tertiary: rgba(146, 189, 223, 1) !important;
     --gray: rgba(215, 215, 215, 1) !important;
+    --bg-light: rgba(252, 252, 252, 1) !important;
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: var(--bg-light) !important;
 }
 
 a {

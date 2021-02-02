@@ -1,8 +1,9 @@
 div.menuItem {
+    margin: 1rem;
     padding: 1rem;
     border-radius: 5px;
     min-width: 100%;
-    border-left: 3px solid white;
+    border-left: 3px solid var(--bg-light);
 }
 
 div.menuItem:hover {
@@ -30,4 +31,46 @@ div.newPost:hover {
     text-decoration: none;
     cursor: pointer;
     transform: translateY(-2px);
+}
+
+.navbar {
+    z-index: 101;
+    box-shadow: 0px 6px 24px rgba(60, 60, 60, 0.20);
+}
+
+.sidebar {
+    position: fixed;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    min-height: 100vh !important;
+    min-width: 250px;
+    max-width: 350px;
+    z-index: 100;
+    padding: 48px 0 0;
+}
+
+.sidebar h5 {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh !important;
+    width: 100vw;
+    margin-left: -1rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#page-content-wrapper {
+    min-width: 0;
+    width: 100%;
 }
