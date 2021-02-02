@@ -1,0 +1,33 @@
+div.menuItem {
+    padding: 1rem;
+    border-radius: 5px;
+    min-width: 100%;
+    border-left: 3px solid white;
+}
+
+div.menuItem:hover {
+    background: var(--secondary-desat);
+    cursor: pointer;
+    border-left: 3px solid var(--secondary);
+}
+
+a.item:hover {
+    text-decoration: none;
+}
+
+div.newPost {
+    min-width: 100%;
+    text-align: center;
+    color: var(--primary);
+    font-weight: bold;
+    background: var(--primary-desat);
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+div.newPost:hover {
+    text-decoration: none;
+    cursor: pointer;
+    transform: translateY(-2px);
+}

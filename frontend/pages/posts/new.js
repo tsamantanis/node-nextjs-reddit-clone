@@ -26,9 +26,9 @@ function NewPost() {
     }
     return (
         <Layout>
-            <div className="container">
+            <div className="col-12">
                 <div className="row justify-content-center align-items-center">
-                    <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div className="col-12 col-md-8">
                         <form onSubmit={ handleSubmit } method="post">
                             <legend>New Post</legend>
                             <div className="form-group">

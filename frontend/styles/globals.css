@@ -1,3 +1,12 @@
+:root {
+    --primary: rgba(255, 99, 20, 1) !important;
+    --primary-desat: rgba(255, 99, 20, 0.25) !important;
+    --secondary: rgba(82, 150, 221, 1) !important;
+    --secondary-desat: rgba(82, 150, 221, 0.3) !important;
+    --tertiary: rgba(146, 189, 223, 1) !important;
+    --gray: rgba(215, 215, 215, 1) !important;
+}
+
 html,
 body {
   padding: 0;
