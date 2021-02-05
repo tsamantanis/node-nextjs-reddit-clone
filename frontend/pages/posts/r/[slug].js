@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     try {
         const res = await axios.get(process.env.NEXT_APP_URI + '/posts/')
         const posts = res.data.posts
-        const paths = posts.map((post) => `/posts/${post.slug}`)
+        const paths = posts.map((post) => `/posts/r/${post.slug}`)
         return { paths, fallback: false }
     } catch (err) {
         console.log(err.message)

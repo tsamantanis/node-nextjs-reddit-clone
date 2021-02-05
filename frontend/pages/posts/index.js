@@ -17,7 +17,7 @@ function Posts() {
         <Layout>
             {posts.map((post) => {
                 return (
-                    <Link href={'/posts/' + post.slug}>
+                    <Link href={'/posts/r/' + post.slug}>
                         <div className="col-12">
                             <div className={styles.card}>
                                 <h3>{ post.title }</h3>
