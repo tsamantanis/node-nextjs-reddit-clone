@@ -1,11 +1,9 @@
-import { Router } from "express"
-import {
+const router = require('express').Router()
+const {
     newPost,
     allPosts,
     postBySlug
-} from "../controllers/posts"
-
-const router = Router()
+} = require('../controllers/posts')
 
 router.get("/", allPosts)
 router.get("/:slug", postBySlug)
