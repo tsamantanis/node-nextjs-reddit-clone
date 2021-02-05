@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     try {
         const res = await axios.get(process.env.NEXT_APP_URI + '/posts/')
         const posts = res.data.posts
-        const paths = posts.map((post) => `/posts/r/${post.slug}`)
+        const paths = posts.map((post) => `/posts/r/${post.subreddit}/${post.slug}`)
         return { paths, fallback: false }
     } catch (err) {
         console.log(err.message)
@@ -16,7 +16,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const res = await axios.get(process.env.NEXT_APP_URI + '/posts/' + params.slug)
+    console.log(params)
+    const res = await axios.get(process.env.NEXT_APP_URI + '/posts/r/'  + params.sub + '/' + params.slug)
     const post = res.data.post
     return { props: { post } }
 }

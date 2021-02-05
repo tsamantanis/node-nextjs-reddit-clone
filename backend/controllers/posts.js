@@ -27,4 +27,13 @@ PostController.postBySlug = (req, res) => {
     })
 }
 
+PostController.postsBySub = (req, res) => {
+    Post.find({subreddit: req.params.sub, slug: req.params.slug}).lean().then(posts => {
+        res.status(200).json({ posts });
+    }).catch(err => {
+        console.log(err.message);
+    })
+}
+
+
 module.exports = PostController

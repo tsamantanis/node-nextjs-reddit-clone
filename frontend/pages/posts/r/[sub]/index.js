@@ -1,21 +1,24 @@
 import axios from 'axios'
+import { useRouter } from "next/router";
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Layout from '../../components/Layout'
-import styles from '../../styles/Home.module.css'
+import Layout from '../../../../components/Layout'
+import styles from '../../../../styles/Home.module.css'
 
-function Posts() {
+function Subreddit() {
+    const router = useRouter();
+    const { sub } = router.query;
     const [posts, setPosts] = useState([])
     useEffect(() => loadPosts(), [])
 
     async function loadPosts() {
-        const res = await axios.get(process.env.NEXT_APP_URI + '/posts')
+        const res = await axios.get(process.env.NEXT_APP_URI + '/posts/r/' + sub)
         setPosts(res.data.posts)
     }
 
     return (
         <Layout>
-            {posts.map((post) => {
+            {posts && posts.map((post) => {
                 return (
                     <Link href={`/posts/r/${post.subreddit}/${post.slug}`}>
                         <div className="col-12">
@@ -32,4 +35,4 @@ function Posts() {
     )
 }
 
-export default Posts
+export default Subreddit
