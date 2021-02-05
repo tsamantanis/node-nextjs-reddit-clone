@@ -20,8 +20,9 @@ function Posts() {
                     <Link href={'/posts/r/' + post.slug}>
                         <div className="col-12">
                             <div className={styles.card}>
+                                <span className={styles.subredditText}>{ `/r/${post.subreddit}` }</span>
                                 <h3>{ post.title }</h3>
-                                <p>{ post.description }</p>
+                                <p>{ post.summary.length > 100 ? post.summary.substring(0, 97) + '...' : post.summary }</p>
                             </div>
                         </div>
                     </Link>

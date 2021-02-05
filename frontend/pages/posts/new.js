@@ -6,6 +6,7 @@ import axios from 'axios'
 function NewPost() {
     const router = useRouter()
     const [title, setTitle] = useState('')
+    const [subreddit, setSubreddit] = useState('')
     const [summary, setSummary] = useState('')
     const [error, setError] = useState('')
     async function handleSubmit(event) {
@@ -42,6 +43,21 @@ function NewPost() {
                                     value={title}
                                     onChange={(event) => {
                                         setTitle(event.target.value);
+                                        setError('')
+                                    }}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="post-title">Subreddit</label>
+                                <input
+                                    type="text"
+                                    name="subreddit"
+                                    className="form-control"
+                                    id="post-subreddit"
+                                    placeholder="Subreddit"
+                                    value={subreddit}
+                                    onChange={(event) => {
+                                        setSubreddit(event.target.value);
                                         setError('')
                                     }}
                                 />
