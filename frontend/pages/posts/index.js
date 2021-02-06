@@ -12,7 +12,7 @@ function Posts() {
         const res = await axios.get(process.env.NEXT_APP_URI + '/posts')
         setPosts(res.data.posts)
     }
-
+    console.log(document.cookies)
     return (
         <Layout>
             {posts.map((post) => {
