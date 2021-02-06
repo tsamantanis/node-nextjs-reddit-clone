@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Layout from '../../../../components/Layout'
+import NewComment from '../../../../components/Comments/NewComment'
 import styles from '../../../../styles/Home.module.css'
 
 function Post({ post }) {
@@ -14,7 +15,10 @@ function Post({ post }) {
                     <div className="comments">
                         <p>Hmm this could be a comment </p>
                     </div>
-                    <div className="Comment form"></div>
+                    <hr />
+                    <NewComment
+                        postId={ post._id }
+                    />
                 </div>
 
             </div>
