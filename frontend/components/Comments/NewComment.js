@@ -15,6 +15,8 @@ function NewComment({ postId }) {
             const res = await axios.post(process.env.NEXT_APP_URI + '/posts/' + postId + '/comments/new', {
                 content: comment
             })
+            setComment('')
+            setError('')
         } catch (error) {
             setError(error.message)
         }
