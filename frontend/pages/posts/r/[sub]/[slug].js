@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Layout from '../../../../components/Layout'
 import NewComment from '../../../../components/Comments/NewComment'
+import CommentList from '../../../../components/Comments/CommentList'
 import styles from '../../../../styles/Home.module.css'
 
 function Post({ post }) {
@@ -12,10 +13,12 @@ function Post({ post }) {
                     <h2>{ post.title }</h2>
                     <p>{ post.summary }</p>
                     <hr />
-                    <div className="comments">
-                        <p>Hmm this could be a comment </p>
+                    <div className="row comments">
+                        <CommentList
+                            comments={ post.comments }
+                        />
                     </div>
-                    <hr />
+                    { post.comments && <hr /> }
                     <NewComment
                         postId={ post._id }
                     />
@@ -39,7 +42,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log(params)
     const res = await axios.get(process.env.NEXT_APP_URI + '/posts/r/'  + params.sub + '/' + params.slug)
     const post = res.data.post
     return { props: { post } }

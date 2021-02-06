@@ -12,7 +12,7 @@ PostController.newPost = (req, res) => {
 }
 
 PostController.allPosts = (req, res) => {
-    Post.find({}).lean().then(posts => {
+    Post.find({}).populate('comments').lean().then(posts => {
         res.status(200).json({ posts });
     }).catch(err => {
         console.log(err.message);
@@ -20,7 +20,7 @@ PostController.allPosts = (req, res) => {
 }
 
 PostController.postBySlug = (req, res) => {
-    Post.findOne({slug: req.params.slug}).lean().then(post => {
+    Post.findOne({slug: req.params.slug}).populate('comments').lean().then(post => {
         res.status(200).json({ post });
     }).catch(err => {
         console.log(err.message);
@@ -28,7 +28,7 @@ PostController.postBySlug = (req, res) => {
 }
 
 PostController.postsBySub = (req, res) => {
-    Post.find({subreddit: req.params.sub, slug: req.params.slug}).lean().then(posts => {
+    Post.find({subreddit: req.params.sub, slug: req.params.slug}).populate('comments').lean().then(posts => {
         res.status(200).json({ posts });
     }).catch(err => {
         console.log(err.message);
