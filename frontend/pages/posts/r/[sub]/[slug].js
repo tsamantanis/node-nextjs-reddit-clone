@@ -1,6 +1,25 @@
 import axios from 'axios'
+import Layout from '../../../../components/Layout'
+import styles from '../../../../styles/Home.module.css'
+
 function Post({ post }) {
-    return <h1>{post.title}</h1>
+    return (
+        <Layout>
+            <div className="col-12 post">
+                <div className={styles.card}>
+                    <span className={styles.subredditText}>{ `/r/${post.subreddit}` }</span>
+                    <h2>{ post.title }</h2>
+                    <p>{ post.summary }</p>
+                    <hr />
+                    <div className="comments">
+                        <p>Hmm this could be a comment </p>
+                    </div>
+                    <div className="Comment form"></div>
+                </div>
+
+            </div>
+        </Layout>
+    )
 }
 
 export async function getStaticPaths() {

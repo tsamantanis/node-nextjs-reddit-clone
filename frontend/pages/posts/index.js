@@ -18,7 +18,7 @@ function Posts() {
             {posts.map((post) => {
                 return (
                     <Link href={`/posts/r/${post.subreddit}/${post.slug}`}>
-                        <div className="col-12">
+                        <div className="col-12 posts">
                             <div className={styles.card}>
                                 <span className={styles.subredditText}>{ `/r/${post.subreddit}` }</span>
                                 <h3>{ post.title }</h3>
