@@ -13,7 +13,7 @@ function NewComment({ postId }) {
         }
         try {
             const res = await axios.post(process.env.NEXT_APP_URI + '/posts/' + postId + '/comments/new', {
-                comment: comment
+                content: comment
             })
         } catch (error) {
             setError(error.message)
