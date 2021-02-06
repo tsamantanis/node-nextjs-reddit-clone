@@ -1,5 +1,5 @@
 .commentContainer {
-    background: var(--gray);
+    background: var(--light-gray);
     border-radius: 5px;
     padding: 0.75rem 0.75rem 2rem 0.75rem;
 }

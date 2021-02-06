@@ -5,6 +5,7 @@
     --secondary-desat: rgba(82, 150, 221, 0.3) !important;
     --tertiary: rgba(146, 189, 223, 1) !important;
     --gray: rgba(215, 215, 215, 1) !important;
+    --light-gray: rgba(215, 215, 215, 0.25) !important;
     --bg-light: rgba(252, 252, 252, 1) !important;
 }
 
