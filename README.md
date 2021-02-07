@@ -35,6 +35,7 @@ Start the development server by running the following command:
 ```bash
 $ npm run dev
 ```
+Please refer to the `.env.example` file located in the `frontend` directory to see what environment variables are needed.
 
 This starts the Next.js web-app on port 3000.
 Open http://localhost:3000 in your browser.
