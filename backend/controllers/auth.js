@@ -14,4 +14,22 @@ UserController.newUser = async (req, res) => {
     }
 }
 
+UserController.login = async (req, res) => {
+    try {
+        const username = req.body.username;
+        const password = req.body.password;
+        const user = await User.findOne({ username }, "username password")
+        if (!user) return res.status(401).send({ message: "Wrong Username or Password" });
+        user.comparePassword(password, (err, isMatch) => {
+            if (!isMatch) return res.status(401).send({ message: "Wrong Username or password" });
+            const token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, {
+                expiresIn: "60 days"
+            });
+            return res.json({ message: "User login successful", authToken: jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, { expiresIn: "60 days" })})
+        });
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = UserController
