@@ -4,7 +4,6 @@ import styles from '../styles/Layout.module.css'
 
 function PanelRight() {
     const [cookie, setCookie] = useCookies(["user"])
-    console.log(cookie)
     if (cookie && cookie.user)
         return (
             <div className="d-none d-md-block col-md-2">
