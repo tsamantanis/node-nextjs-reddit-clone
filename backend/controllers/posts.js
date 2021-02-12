@@ -4,11 +4,13 @@ const Post = require('../models/post')
 const PostController = {}
 
 PostController.newPost = (req, res) => {
-    const post = new Post(req.body)
-    post.save((err, post) => {
-        if (err) return res.status(500).json({ message: err.message })
-        return res.json({ message: "Post created successfully"})
-    })
+    if (req.user) {
+        const post = new Post(req.body)
+        post.save((err, post) => {
+            if (err) return res.status(500).json({ message: err.message })
+            return res.json({ message: "Post created successfully"})
+        })
+    } else return res.status(401).json({message: "Unauthorized"})
 }
 
 PostController.allPosts = (req, res) => {
