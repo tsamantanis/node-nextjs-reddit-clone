@@ -18,8 +18,9 @@ function NewPost() {
         try {
             const res = await axios.post(process.env.NEXT_APP_URI + '/posts/new', {
                 title: title,
+                subreddit: subreddit,
                 summary: summary,
-            })
+            }, { withCredentials: true })
             router.push("/")
         } catch (error) {
             setError(error.message)

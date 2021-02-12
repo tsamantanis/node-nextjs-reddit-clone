@@ -3,8 +3,8 @@ import { useCookies } from "react-cookie"
 import styles from '../styles/Layout.module.css'
 
 function PanelRight() {
-    const [cookie, setCookie] = useCookies(["user"])
-    if (cookie && cookie.user)
+    const [cookie, setCookie] = useCookies(["nToken"])
+    if (cookie && cookie.nToken)
         return (
             <div className="d-none d-md-block col-md-2">
                 <Link href="/posts/new">

@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { useCookies } from "react-cookie"
 import styles from '../styles/Auth.module.css'
 function SignIn() {
     const router = useRouter()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const [cookie, setCookie] = useCookies(["user"])
     async function handleSubmit(event) {
         event.preventDefault()
         if (!username || username.length === 0 || !password || password.length === 0) {
@@ -19,12 +17,7 @@ function SignIn() {
             const res = await axios.post(process.env.NEXT_APP_URI + '/users/login', {
                 username: username,
                 password: password,
-            })
-            setCookie("user", JSON.stringify(res.data.authToken), {
-                path: "/",
-                maxAge: 900000, // Expires after 1hr
-                sameSite: true,
-            })
+            }, { withCredentials: true })
             router.push("/")
         } catch (error) {
             setError(error.message)

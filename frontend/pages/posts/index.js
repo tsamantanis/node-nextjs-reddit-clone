@@ -9,7 +9,7 @@ function Posts() {
     useEffect(() => loadPosts(), [])
 
     async function loadPosts() {
-        const res = await axios.get(process.env.NEXT_APP_URI + '/posts')
+        const res = await axios.get(process.env.NEXT_APP_URI + '/posts', { withCredentials: true })
         setPosts(res.data.posts)
     }
     return (
