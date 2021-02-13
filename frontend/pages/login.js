@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { useCookies } from "react-cookie"
 import styles from '../styles/Auth.module.css'
 function SignIn() {
     const router = useRouter()
+    const [cookies, setCookie, getCookie] = useCookies(['nToken']);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -18,6 +20,8 @@ function SignIn() {
                 username: username,
                 password: password,
             }, { withCredentials: true })
+            ;
+            setCookie("nToken", unescape(new RegExp("nToken" + "=([^;]+)").exec(document.cookie)[1]))
             router.push("/")
         } catch (error) {
             setError(error.message)

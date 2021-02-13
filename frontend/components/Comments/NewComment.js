@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { useCookies } from "react-cookie"
 
-function NewComment({ postId }) {
+function NewComment({ postId, loadPost }) {
+    const [cookies, setCookie, removeCookie] = useCookies(['nToken'])
     const [comment, setComment] = useState('')
     const [error, setError] = useState('')
 
@@ -14,9 +16,10 @@ function NewComment({ postId }) {
         try {
             const res = await axios.post(process.env.NEXT_APP_URI + '/posts/' + postId + '/comments/new', {
                 content: comment
-            })
+            }, { withCredentials: true })
             setComment('')
             setError('')
+            loadPost()
         } catch (error) {
             setError(error.message)
         }
