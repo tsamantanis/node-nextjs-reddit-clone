@@ -3,6 +3,7 @@ const slugify = require("slugify")
 const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
+    author : { type: Schema.Types.ObjectId, ref: "User", required: true },
     title: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
     summary: { type: String, required: true },
