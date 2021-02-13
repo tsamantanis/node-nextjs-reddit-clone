@@ -19,7 +19,7 @@ function Posts() {
                     <Link href={`/posts/r/${post.subreddit}/${post.slug}`}>
                         <div className="col-12 posts">
                             <div className={styles.card}>
-                                <span className={styles.subredditText}>{ `/r/${post.subreddit}` }</span>
+                                <span className={styles.subredditText}>{ `/r/${post.subreddit} - ${post.author ? post.author.username : "anonymous"}` }</span>
                                 <h3>{ post.title }</h3>
                                 <p>{ post.summary.length > 100 ? post.summary.substring(0, 97) + '...' : post.summary }</p>
                             </div>

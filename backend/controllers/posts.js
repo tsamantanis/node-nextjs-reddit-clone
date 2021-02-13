@@ -21,7 +21,7 @@ PostController.newPost = (req, res) => {
 }
 
 PostController.allPosts = (req, res) => {
-    Post.find({}).populate('comments').lean().then(posts => {
+    Post.find({}).populate('comments author').lean().then(posts => {
         res.status(200).json({ posts });
     }).catch(err => {
         console.log(err.message);
