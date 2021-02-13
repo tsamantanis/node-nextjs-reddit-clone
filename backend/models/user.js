@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
     password: { type: String, select: false },
-    username: { type: String, required: true, unique: true }
+    username: { type: String, required: true, unique: true },
+    posts : [{ type: Schema.Types.ObjectId, ref: "Post" }]
 },
   {timestamps: true}
 );
