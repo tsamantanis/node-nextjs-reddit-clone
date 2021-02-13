@@ -23,6 +23,7 @@ function Post({ post }) {
                     <div className="row comments">
                         <CommentList
                             comments={ post.comments }
+                            author={ post.author ? post.author.username : "anonymous" }
                         />
                     </div>
                     { post.comments && post.comments.length > 0 && <hr /> }
