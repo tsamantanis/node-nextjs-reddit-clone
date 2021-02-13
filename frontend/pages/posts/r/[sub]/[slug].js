@@ -14,7 +14,7 @@ function Post({ post }) {
             </Head>
             <div className="col-12 post">
                 <div className={styles.card}>
-                    <span className={styles.subredditText}>{ `/r/${post.subreddit}` }</span>
+                    <span className={styles.subredditText}>{ `/r/${post.subreddit} - ${post.author ? post.author.username : "anonymous"}` }</span>
                     <h2>{ post.title }</h2>
                     <p>{ post.summary }</p>
                     <hr />
@@ -23,7 +23,7 @@ function Post({ post }) {
                             comments={ post.comments }
                         />
                     </div>
-                    { post.comments && <hr /> }
+                    { post.comments && post.comments.length > 0 && <hr /> }
                     <NewComment
                         postId={ post._id }
                     />
