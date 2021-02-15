@@ -22,14 +22,30 @@ describe("User", function() {
             .post("/users/sign-up")
             .send({ username: "testone", password: "password" })
             .end(function(err, res) {
-                console.log(res.body);
                 res.should.have.status(200);
                 agent.should.have.cookie("nToken");
                 done();
             });
         });
     });
+    it("should be able to login", function(done) {
+        agent.post("/users/login")
+        .send({ username: "testone", password: "password" })
+        .end(function(err, res) {
+            res.should.have.status(200);
+            agent.should.have.cookie("nToken");
+            done();
+        });
+    });
+    it("should be able to logout", function(done) {
+        agent.get("/users/logout").end(function(err, res) {
+            console.log(res)
+            res.should.have.status(200);
+            agent.should.not.have.cookie("nToken");
+            done();
+        });
+    });
     after(function () {
-        agent.close()
+        agent.close();
     });
 });
