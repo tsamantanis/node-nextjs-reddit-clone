@@ -24,6 +24,8 @@ function Post({ post }) {
                         <CommentList
                             comments={ post.comments }
                             author={ post.author ? post.author.username : "anonymous" }
+                            postId={ post._id }
+                            loadPost={ () => router.replace(router.asPath) }
                         />
                     </div>
                     { post.comments && post.comments.length > 0 && <hr /> }

@@ -24,4 +24,21 @@ CommentController.newComment = async (req, res) => {
     } else return res.status(401).json({message: "Unauthorized"})
 }
 
+CommentController.newCommentReply = async (req, res) => {
+    if (req.user) {
+        try {
+            const reply = new Comment(req.body);
+            reply.author = req.user._id
+            const savedReply = await reply.save()
+            console.log(req.params)
+            const comment = await Comment.findById(req.params.commentId)
+            if (!comment) return res.status(500).json({ message: "Comment not found" })
+            comment.comments.unshift(savedReply)
+            comment.save()
+            return res.json({ message: "Reply created successfully"})
+        } catch (err) {
+            return res.status(500).json({ message: err.message })
+        }
+    } else return res.status(401).json({message: "Unauthorized"})
+}
 module.exports = CommentController
