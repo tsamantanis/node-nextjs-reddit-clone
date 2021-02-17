@@ -9,7 +9,7 @@ function CommentList({ postId, comments, author, loadPost }) {
     return comments && comments.length > 0 && comments.map((comment, index) => {
         return (
             <div className={`col-12 ${styles.commentContainer} mt-2`} key={index}>
-                <span className={`${styles.username} mr-2`}>{ author }</span>
+                <span className={`${styles.username} mr-2`}>{ comment.author.username }</span>
                 <span className={styles.timestamp}>{new BetterDate(comment.created_at).when()}</span>
                 <p className={styles.comment}>{comment.content}</p>
                 { reply && reply === comment._id ?
