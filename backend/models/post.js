@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const slugify = require("slugify")
 const Schema = mongoose.Schema
+const Populate = require("../util/autopopulate")
 
 const PostSchema = new Schema({
     author : { type: Schema.Types.ObjectId, ref: "User", required: true },
@@ -12,7 +13,9 @@ const PostSchema = new Schema({
 }, {timestamps: {createdAt: 'created_at'}})
 
 // Create a unique slug based on title
-PostSchema.pre("validate", function(next) {
+PostSchema.pre('findOne', Populate('author'))
+    .pre('find', Populate('author'))
+    .pre("validate", function(next) {
     const post = this;
     if (post.title) {
         post.slug = slugify(post.title, { lower: true, strict: true });
