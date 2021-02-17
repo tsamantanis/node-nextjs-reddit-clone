@@ -3,7 +3,9 @@ const {
     newPost,
     allPosts,
     postBySlug,
-    postsBySub
+    postsBySub,
+    upvote,
+    downvote,
 } = require('../controllers/posts')
 
 const {
@@ -17,5 +19,8 @@ router.get("/r/:sub/:slug", postBySlug)
 router.post("/new", newPost)
 router.post("/:postId/comments/new", newComment)
 router.post("/:postId/comments/:commentId/replies/new", newCommentReply)
+router.put("/:id/upvote", upvote)
+router.put("/:id/downvote", downvote)
+
 
 module.exports = router
