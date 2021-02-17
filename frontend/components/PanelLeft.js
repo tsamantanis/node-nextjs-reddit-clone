@@ -8,7 +8,7 @@ function PanelLeft() {
             <div className="sidebar-sticky"></div>
             <h5>Menu</h5>
             <Nav.Item>
-                <Link href="/posts">
+                <Link href="/">
                     <div className={styles.menuItem}>
                         <span className={styles.item}>Home</span>
                     </div>

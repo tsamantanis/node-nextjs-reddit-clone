@@ -3,10 +3,10 @@ import axios from 'axios'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useCookies } from "react-cookie"
-import Layout from '../../../../components/Layout'
-import NewComment from '../../../../components/Comments/NewComment'
-import CommentList from '../../../../components/Comments/CommentList'
-import styles from '../../../../styles/Home.module.css'
+import Layout from '../../../components/Layout'
+import NewComment from '../../../components/Comments/NewComment'
+import CommentList from '../../../components/Comments/CommentList'
+import styles from '../../../styles/Home.module.css'
 
 function Post({ post }) {
     const router = useRouter()
@@ -87,7 +87,7 @@ export async function getStaticPaths() {
     try {
         const res = await axios.get(process.env.NEXT_APP_URI + '/posts/')
         const posts = res.data.posts
-        const paths = posts.map((post) => `/posts/r/${post.subreddit}/${post.slug}`)
+        const paths = posts.map((post) => `/r/${post.subreddit}/${post.slug}`)
         return { paths, fallback: false }
     } catch (err) {
         console.log(err.message)
